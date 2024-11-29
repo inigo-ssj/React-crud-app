@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const AddEditForm = ({ onSave, currentRow }) => {
-  const [formData, setFormData] = useState({ name: '', age: '' });
+  const [formData, setFormData] = useState({ name: "", age: "" });
 
   useEffect(() => {
     if (currentRow) {
-      setFormData(currentRow); // Populate form with the row being edited
+      setFormData(currentRow);
     } else {
-      setFormData({ name: '', age: '' });
+      setFormData({ name: "", age: "" });
     }
   }, [currentRow]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.age) {
-      alert('Please fill in all fields!');
+      alert("Please fill in all fields!");
       return;
     }
     onSave(formData);
-    setFormData({ name: '', age: '' });
+    setFormData({ name: "", age: "" });
   };
 
   const handleChange = (e) => {
@@ -42,7 +42,7 @@ const AddEditForm = ({ onSave, currentRow }) => {
         value={formData.age}
         onChange={handleChange}
       />
-      <button type="submit">{currentRow ? 'Update' : 'Add'}</button>
+      <button type="submit">{currentRow ? "Update" : "Add"}</button>
     </form>
   );
 };
